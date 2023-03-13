@@ -5,6 +5,8 @@ import Home from "./Pages/Home/Home";
 import Product from "./Pages/Product/Product";
 import Products from "./Pages/Products/Products";
 
+import "./app.scss"
+
 
 
 const Layout = () => {
@@ -17,6 +19,9 @@ const Layout = () => {
   )
 
 }
+
+
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -39,9 +44,12 @@ const router = createBrowserRouter([
 
 ])
 
+
+
+
 function App() {
   return (
-    <div>
+    <div className="app">
       <RouterProvider router={router} />
     </div>
   );
