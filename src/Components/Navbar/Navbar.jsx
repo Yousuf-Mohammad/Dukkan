@@ -28,7 +28,7 @@ const Navbar = () => {
 
                 </div>
                 <div className='center'>
-                    <Link className='link' to="/">RUBIK'S</Link>
+                    <Link className='link' to="/"><img src="/images/rubiks-cube-29397.png" width='150px' alt="" /></Link>
                 </div>
 
                 <div className="right">

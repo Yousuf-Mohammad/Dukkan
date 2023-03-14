@@ -37,7 +37,7 @@ const Footer = () => {
             </div>
             <div className="bottom">
                 <div className="left">
-                    <span className="logo">RUBIK'S</span>
+                    <span className="logo"><img src="/images/rubiks-cube-29397.png" width='150px' alt="" /></span>
                     <span className="copyright"> © Copright 2023. All Right Reserved. Devloped by Yousuf  </span>
                 </div>
                 <div className="right">
