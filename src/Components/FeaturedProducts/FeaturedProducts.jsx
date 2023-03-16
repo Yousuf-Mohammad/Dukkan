@@ -29,7 +29,7 @@ const FeaturedProducts = ({ type }) => {
         {
             id: 3,
             img: "https://images.pexels.com/photos/977796/pexels-photo-977796.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-
+            img1: "https://images.pexels.com/photos/826380/pexels-photo-826380.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
             title: "Leather jacket",
             isNew: false,
 
@@ -52,7 +52,7 @@ const FeaturedProducts = ({ type }) => {
         <div className='featuredProducts'>
             <div className="top">
                 <h1>{type} products</h1>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam blanditiis dolores animi quasi quo quas natus nam assumenda, magni nihil labore architecto atque voluptas autem. Nobis possimus commodi excepturi nesciunt.</p>
+                <p>Rubick's the cloth brand is currently featuring trending products that combine quality and style, ensuring that customers stay ahead of the fashion game while experiencing ultimate comfort.</p>
             </div>
 
             <div className="bottom">

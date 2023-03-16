@@ -27,11 +27,25 @@ const Footer = () => {
 
                 <div className="item">
                     <h1>About</h1>
-                    <span>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cupiditate ad, reprehenderit et ratione dolorum nostrum, delectus ut adipisci accusantium aspernatur tenetur, recusandae quas fuga molestiae quia fugiat consectetur assumenda nesciunt.</span>
+                    <span>
+                        Rubik's is a brand that celebrates individuality and creativity, offering fashion-forward options that are both stylish and functional.<br />
+
+                        We offer stylish and trendy clothing options for men, women and children. Inspired by the iconic Rubik's cube puzzle, the brand aims to bring creativity, originality, and fun to the world of fashion.<br />
+
+                        In addition to our clothing offerings, Rubik's also offers accessories such as hats and bags that complement their clothing line perfectly.
+
+
+                    </span>
                 </div>
                 <div className="item">
                     <h1>Contact</h1>
-                    <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus aperiam nobis quisquam et iusto. Fuga inventore expedita, ab esse, consequatur ducimus dicta quisquam quis, ratione similique aspernatur praesentium quae unde?</span>
+                    <span>For any inquiries or feedback, please feel free to contact us via the following channels:<br /><hr /><hr /><br />
+
+                        Email: info@rubicksthecloth.com <br />
+                        Phone: +880 13263846 <br />
+                        Address: 23 Kolpona Street,Kuril.Dhaka <br /><br />
+                        We look forward to hearing from you!
+                    </span>
                 </div>
 
             </div>
