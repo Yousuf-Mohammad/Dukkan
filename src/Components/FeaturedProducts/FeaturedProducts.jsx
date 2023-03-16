@@ -16,7 +16,7 @@ const FeaturedProducts = ({ type }) => {
 
         },
         {
-            id: 3,
+            id: 2,
             img: "https://images.pexels.com/photos/1450114/pexels-photo-1450114.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
             img1: "https://images.pexels.com/photos/3178767/pexels-photo-3178767.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
 
