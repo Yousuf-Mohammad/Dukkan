@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
 import List from '../../Components/LIst/List';
@@ -7,32 +7,47 @@ const Products = () => {
 
     const param = useParams();
     const CategoryId = parseInt(param.id);
+
     const [maximumPrice, setMaximumPrice] = useState(5000);
     const [sort, setSort] = useState(null);
 
+    const [data, setData] = useState(null);
+    const [selectedSubCats, setSelectedSubCats] = useState([]);
+
+    const handleChange = (e) => {
+        const value = e.target.value;
+        const isChecked = e.target.checked;
+
+        setSelectedSubCats(isChecked ? [...selectedSubCats, value] : selectedSubCats.filter(item => item !== value));
+    }
+    console.log(selectedSubCats)
+
+    const URL =
+        "http://localhost:1337/api/sub-categories?populate=*&%5Bfilters%5D%5Bcategories%5D%5Bid%5D%5B$eq%5D=" + `${CategoryId}`;
+
+    useEffect(() => {
+        fetch(URL)
+            .then(res => res.json())
+            .then(data => setData(data.data));
+    });
+
+
     return (
         <div className='products'>
+
             <div className="left">
                 <div className="filterItem">
                     <h2>Product Categories</h2>
-                    <div className="inputItem">
-                        <input type="checkbox" name="" id="1" value={1} />
-                        <label htmlFor="1">Mens</label>
-                    </div>
+                    {data?.map((item) => (
+                        <div className="inputItem" key={item.id}>
+                            <input type="checkbox" name="" id={item.id} value={item.id} onChange={handleChange} />
+                            <label htmlFor={item.id}>{item.attributes.title}</label>
+                        </div>
+                    ))}
 
-                    <div className="inputItem">
-                        <input type="checkbox" name="" id="2" value={2} />
-                        <label htmlFor="2">Womens</label>
-                    </div>
 
-                    <div className="inputItem">
-                        <input type="checkbox" name="" id="3" value={3} />
-                        <label htmlFor="3">Kids</label>
-                    </div>
-                    <div className="inputItem">
-                        <input type="checkbox" name="" id="4" value={4} />
-                        <label htmlFor="1">Accessories</label>
-                    </div>
+
+
                 </div>
 
 
@@ -67,7 +82,7 @@ const Products = () => {
 
             <div className="right">
                 <img src="https://images.pexels.com/photos/3839432/pexels-photo-3839432.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" className='catImage' alt="" />
-                <List categoryId={CategoryId} maximumPrice={maximumPrice} sort={sort} />
+                <List catId={CategoryId} maximumPrice={maximumPrice} sort={sort} SubCats={selectedSubCats} />
             </div>
 
         </div>
