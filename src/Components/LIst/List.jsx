@@ -24,12 +24,14 @@ const List = (SubCats, maximumPrice, sort) => {
                 console.log(error);
             });
     });
+    const isLoading = data.length <= 10;
 
     return (
         <div className='list'>
-            {data?.map(item => (
-                <Card item={item} key={item.id} />
-            ))}
+            {!isLoading ? <img src="https://cdn.dribbble.com/users/1641/screenshots/1632371/loading.gif" alt="" /> :
+                data?.map(item => (
+                    <Card item={item} key={item.id} />
+                ))}
         </div>
     );
 }

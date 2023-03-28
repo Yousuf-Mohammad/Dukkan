@@ -3,8 +3,10 @@ import { Link } from 'react-router-dom';
 import "./Card.scss"
 
 const Card = ({ item }) => {
+
+    console.log(item)
     return (
-        <Link className='link' to>
+        <Link className='link' to={`/product/${item.id}`}>
             <div className='card'>
                 <div className="image">
                     {item?.attributes.isNew && <span>New Arrival</span>}

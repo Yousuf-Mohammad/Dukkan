@@ -1,33 +1,51 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import BalanceOutlinedIcon from '@mui/icons-material/BalanceOutlined';
-
+import axios from 'axios';
 import "./Product.scss"
+import { useParams } from 'react-router-dom';
 const Product = () => {
-    const [selectedImage, setSelectedImage] = useState(0)
+    const id = useParams().id;
+    const [selectedImage, setSelectedImage] = useState("img")
     const [quantity, setQuantity] = useState(1)
-    const images = [
-        "https://images.pexels.com/photos/1656684/pexels-photo-1656684.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-        "https://images.pexels.com/photos/1561011/pexels-photo-1561011.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-    ];
+    const [data, setData] = useState([])
+
+    const URL =
+        `http://localhost:1337/api/products/${id}?populate=*`
+
+    useEffect(() => {
+
+
+        axios.get(URL)
+            .then(response => {
+                setData(response.data.data.attributes)
+            })
+            .catch(error => {
+                console.log(error);
+            });
+
+        console.log(data)
+    });
+    const isLoading = data.length <= 10;
+
     return (
         <div className='product'>
             <div className="left">
                 <div className="images">
-                    <img src={images[0]} alt="" onClick={e => setSelectedImage(0)} />
-                    <img src={images[1]} alt="" onClick={e => setSelectedImage(1)} />
+                    <img src={"http://localhost:1337" + data?.img?.data.attributes.url} alt="" onClick={e => setSelectedImage("img")} />
+                    <img src={"http://localhost:1337" + data?.img1?.data.attributes.url} alt="" onClick={e => setSelectedImage("img1")} />
                 </div>
                 <div className="mainImg">
-                    <img src={images[selectedImage]} alt="" />
+                    <img src={"http://localhost:1337" + data?.[selectedImage]?.data.attributes.url} alt="" />
                 </div>
             </div>
             <div className="right">
-                <h1>Title</h1>
-                <span className='price'>$890</span>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe fuga perspiciatis voluptate, consectetur dolore at odit cumque ipsam laborum doloremque quam aspernatur, fugit alias! Quibusdam esse aliquam inventore quo enim.</p>
+                <h1>{data.title}</h1>
+                <span className='price'>{data.price}BDT</span>
+                <p>{data.desc}</p>
                 <div className="quantity">
-                    <button onClick={() => setQuantity(prev => prev == 1 ? 1 : prev - 1)}>-</button>
+                    <button onClick={() => setQuantity(prev => prev === 1 ? 1 : prev - 1)}>-</button>
                     {quantity}
                     <button onClick={() => setQuantity(prev => prev + 1)}>+</button>
                 </div>

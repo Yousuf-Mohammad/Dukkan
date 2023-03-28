@@ -8,13 +8,15 @@ const FeaturedProducts = ({ type }) => {
     const [product, setProduct] = useState([]);
 
     const URL =
-        "http://localhost:1337/api/products?populate=*&[filters][type][$eq]=" + `${type}`;
+        `http://localhost:1337/api/products?populate=*&[filters][type][$eq]=${type}`;
 
     useEffect(() => {
         fetch(URL)
             .then(res => res.json())
             .then(data => setProduct(data.data));
     });
+    const isLoading = product?.length <= 10
+
 
     return (
 
@@ -26,9 +28,10 @@ const FeaturedProducts = ({ type }) => {
             </div >
 
             <div className="bottom">
-                {product.map(item => (
-                    <Card item={item} key={item.id} />
-                ))}
+                {!isLoading ? <img className='loadingGif' src="https://cdn.dribbble.com/users/1641/screenshots/1632371/loading.gif" alt="" /> :
+                    product.map(item => (
+                        <Card item={item} key={item.id} />
+                    ))}
 
             </div>
 
