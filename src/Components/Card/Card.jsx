@@ -4,15 +4,16 @@ import "./Card.scss"
 
 const Card = ({ item }) => {
 
-    console.log(item)
+
+
     return (
         <Link className='link' to={`/product/${item.id}`}>
             <div className='card'>
                 <div className="image">
                     {item?.attributes.isNew && <span>New Arrival</span>}
-                    <img src={"http://localhost:1337" + item?.attributes.img.data.attributes.url} alt="" className="mainImg" />
+                    <img src={item?.attributes.img.data.attributes.url} alt="" className="mainImg" />
 
-                    <img src={"http://localhost:1337" + item.attributes.img1.data.attributes.url} alt="" className="secImg" />
+                    <img src={item.attributes.img1.data.attributes.url} alt="" className="secImg" />
 
                 </div>
                 <h2>{item?.attributes.title}</h2>

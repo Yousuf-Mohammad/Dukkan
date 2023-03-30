@@ -40,10 +40,9 @@ const Cart = () => {
             <h1>Product on your cart</h1>
             {products?.map(item => (
                 <div className="item" key={item.id}>
-                    <img src={"http://localhost:1337" + item.img} alt="" />
+                    <img src={item.img} alt="" />
                     <div className="details">
                         <h2>{item.title}</h2>
-                        <p>{item.desc?.substring(0, 100)}</p>
                         <div className="price">
                             {item.quantity} x  {item.price}TK
                         </div>

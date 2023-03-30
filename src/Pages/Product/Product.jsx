@@ -31,61 +31,64 @@ const Product = () => {
 
     });
 
-
+    console.log(id)
     return (
-        <div className='product'>
-            <div className="left">
-                <div className="images">
-                    <img src={"http://localhost:1337" + data?.attributes?.img?.data.attributes.url} alt="" onClick={e => setSelectedImage("img")} />
-                    <img src={"http://localhost:1337" + data?.attributes?.img1?.data.attributes.url} alt="" onClick={e => setSelectedImage("img1")} />
-                </div>
-                <div className="mainImg">
-                    <img src={"http://localhost:1337" + data?.attributes?.[selectedImage]?.data.attributes.url} alt="" />
-                </div>
-            </div>
-            <div className="right">
-                <h1>{data?.attributes?.title}</h1>
-                <span className='price'>{data?.attributes?.price}BDT</span>
-                <p>{data?.attributes?.desc}</p>
-                <div className="quantity">
-                    <button onClick={() => setQuantity(prev => prev === 1 ? 1 : prev - 1)}>-</button>
-                    {quantity}
-                    <button onClick={() => setQuantity(prev => prev + 1)}>+</button>
-                </div>
-
-                <button
-                    className="add"
-                    onClick={() =>
-                        dispatch(
-                            addToCart({
-                                id: data.id,
-                                title: data.attributes.title,
-                                desc: data.attributes.desc,
-                                price: data.attributes.price,
-                                img: data.attributes.img.data.attributes.url,
-                                quantity,
-                            })
-                        )
-                    }
-                >
-                    <AddShoppingCartIcon /> ADD TO CART
-                </button>
-                <div className="link">
-                    <div className="item">
-                        <FavoriteBorderIcon /> ADD TO WISHLIST
+        <div>
+            {<div className='product'>
+                <div className="left">
+                    <div className="images">
+                        <img src={data?.attributes?.img?.data.attributes.url} alt="" onClick={e => setSelectedImage("img")} />
+                        <img src={data?.attributes?.img1?.data.attributes.url} alt="" onClick={e => setSelectedImage("img1")} />
                     </div>
-                    <div className="item">
-                        <BalanceOutlinedIcon /> ADD TO COMPARE
+                    <div className="mainImg">
+                        <img src={data?.attributes?.[selectedImage]?.data.attributes.url} alt="" />
                     </div>
                 </div>
-                <div className="details">
-                    <span>Vendor: Polo</span>
-                    <span>Product Type: T-Shirt</span>
-                    <span>Tag: T-Shirt, Men, Top</span>
+                <div className="right">
+                    <h1>{data?.attributes?.title}</h1>
+                    <span className='price'>{data?.attributes?.price}BDT</span>
+                    <p>{data?.attributes?.desc}</p>
+                    <div className="quantity">
+                        <button onClick={() => setQuantity(prev => prev === 1 ? 1 : prev - 1)}>-</button>
+                        {quantity}
+                        <button onClick={() => setQuantity(prev => prev + 1)}>+</button>
+                    </div>
+
+                    <button
+                        className="add"
+                        onClick={() =>
+                            dispatch(
+                                addToCart({
+                                    id: data.id,
+                                    title: data.attributes.title,
+                                    desc: data.attributes.desc,
+                                    price: data.attributes.price,
+                                    img: data.attributes.img.data.attributes.url,
+                                    quantity,
+                                })
+                            )
+                        }
+                    >
+                        <AddShoppingCartIcon /> ADD TO CART
+                    </button>
+                    <div className="link">
+                        <div className="item">
+                            <FavoriteBorderIcon /> ADD TO WISHLIST
+                        </div>
+                        <div className="item">
+                            <BalanceOutlinedIcon /> ADD TO COMPARE
+                        </div>
+                    </div>
+                    <div className="details">
+                        <span>Vendor: Polo</span>
+                        <span>Product Type: T-Shirt</span>
+                        <span>Tag: T-Shirt, Men, Top</span>
+                    </div>
+
+
                 </div>
+            </div>}
 
-
-            </div>
         </div>
     );
 }

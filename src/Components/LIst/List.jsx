@@ -9,7 +9,7 @@ const List = (SubCats, maximumPrice, sort) => {
     const CatId = parseInt(param.id);
     const [data, setData] = useState([])
     const URL =
-        "http://localhost:1337/api/categories/" + `${CatId}` + "?populate[products][populate]=*";
+        `http://localhost:1337/api/categories/${CatId}?populate[products][populate]=*`;
 
     useEffect(() => {
         // fetch(URL)

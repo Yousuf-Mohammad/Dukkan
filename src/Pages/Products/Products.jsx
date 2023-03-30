@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { useParams } from 'react-router-dom';
 
 import List from '../../Components/LIst/List';
@@ -8,28 +8,27 @@ const Products = () => {
     const param = useParams();
     const CategoryId = parseInt(param.id);
 
-    const [maximumPrice, setMaximumPrice] = useState(5000);
-    const [sort, setSort] = useState(null);
 
-    const [data, setData] = useState(null);
-    const [selectedSubCats, setSelectedSubCats] = useState([]);
 
-    const handleChange = (e) => {
-        const value = e.target.value;
-        const isChecked = e.target.checked;
+    // const [data, setData] = useState(null);
+    // const [selectedSubCats, setSelectedSubCats] = useState([]);
 
-        setSelectedSubCats(isChecked ? [...selectedSubCats, value] : selectedSubCats.filter(item => item !== value));
-    }
-    console.log(selectedSubCats)
+    // const handleChange = (e) => {
+    //     const value = e.target.value;
+    //     const isChecked = e.target.checked;
 
-    const URL =
-        "http://localhost:1337/api/sub-categories?populate=*&%5Bfilters%5D%5Bcategories%5D%5Bid%5D%5B$eq%5D=" + `${CategoryId}`;
+    //     setSelectedSubCats(isChecked ? [...selectedSubCats, value] : selectedSubCats.filter(item => item !== value));
+    // }
+    // console.log(selectedSubCats)
 
-    useEffect(() => {
-        fetch(URL)
-            .then(res => res.json())
-            .then(data => setData(data.data));
-    });
+    // const URL =
+    //     "http://localhost:1337/api/sub-categories?populate=*&%5Bfilters%5D%5Bcategories%5D%5Bid%5D%5B$eq%5D=" + `${CategoryId}`;
+
+    // useEffect(() => {
+    //     fetch(URL)
+    //         .then(res => res.json())
+    //         .then(data => setData(data.data));
+    // });
 
 
     return (
@@ -39,7 +38,7 @@ const Products = () => {
 
             <div className="items">
                 <img src="https://images.pexels.com/photos/3839432/pexels-photo-3839432.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" className='catImage' alt="" />
-                <List catId={CategoryId} maximumPrice={maximumPrice} sort={sort} SubCats={selectedSubCats} />
+                <List catId={CategoryId} />
             </div>
 
         </div>
