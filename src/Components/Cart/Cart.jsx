@@ -23,7 +23,7 @@ const Cart = () => {
     const handlePayment = async () => {
         try {
             const stripe = await stripePromise;
-            const res = await axios.post("http://localhost:1337/api/orders", {
+            const res = await axios.post("https://dukkan.onrender.com/api/orders", {
                 products,
             });
             await stripe.redirectToCheckout({

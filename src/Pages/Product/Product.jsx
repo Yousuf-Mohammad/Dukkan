@@ -15,7 +15,7 @@ const Product = () => {
     const dispatch = useDispatch();
 
     const URL =
-        `http://localhost:1337/api/products/${id}?populate=*`
+        `https://dukkan.onrender.com/api/products/${id}?populate=*`
 
     useEffect(() => {
 
@@ -79,11 +79,11 @@ const Product = () => {
                             <BalanceOutlinedIcon /> ADD TO COMPARE
                         </div>
                     </div>
-                    <div className="details">
+                    {/* <div className="details">
                         <span>Vendor: Polo</span>
                         <span>Product Type: T-Shirt</span>
                         <span>Tag: T-Shirt, Men, Top</span>
-                    </div>
+                    </div> */}
 
 
                 </div>

@@ -8,30 +8,33 @@ const List = (SubCats, maximumPrice, sort) => {
     const param = useParams();
     const CatId = parseInt(param.id);
     const [data, setData] = useState([])
+    const [loading, setLoading] = useState(false)
     const URL =
-        `http://localhost:1337/api/categories/${CatId}?populate[products][populate]=*`;
+        `https://dukkan.onrender.com/api/categories/${CatId}?populate[products][populate]=*`;
 
     useEffect(() => {
-        // fetch(URL)
-        //     .then(res => res.json())
-        //     .then(data => setData(data.data.attributes.products.data));
+        setLoading(true)
+        setTimeout(() => {
+            axios.get(URL)
+                .then(response => {
+                    setData(response.data.data.attributes.products.data)
+                })
+                .catch(error => {
+                    console.log(error);
+                });
+        }, 300)
+        setLoading(false)
+    },);
 
-        axios.get(URL)
-            .then(response => {
-                setData(response.data.data.attributes.products.data)
-            })
-            .catch(error => {
-                console.log(error);
-            });
-    });
-    const isLoading = data.length <= 10;
 
     return (
         <div className='list'>
-            {!isLoading ? <img src="https://cdn.dribbble.com/users/1641/screenshots/1632371/loading.gif" alt="" /> :
+            {loading ? <img src="https://cdn.dribbble.com/users/1641/screenshots/1632371/loading.gif" alt="" /> :
+
                 data?.map(item => (
                     <Card item={item} key={item.id} />
-                ))}
+                ))
+            }
         </div>
     );
 }

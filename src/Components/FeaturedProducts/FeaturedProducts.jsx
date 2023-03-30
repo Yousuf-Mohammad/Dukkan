@@ -8,7 +8,7 @@ const FeaturedProducts = ({ type }) => {
     const [product, setProduct] = useState([]);
 
     const URL =
-        `http://localhost:1337/api/products?populate=*&[filters][type][$eq]=${type}`;
+        `https://dukkan.onrender.com/api/products?populate=*&[filters][type][$eq]=${type}`;
 
     useEffect(() => {
         fetch(URL)
