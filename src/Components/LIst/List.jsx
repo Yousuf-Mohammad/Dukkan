@@ -1,28 +1,28 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Card from "../Card/Card";
-import { useParams } from 'react-router-dom';
 import "./List.scss"
 
-const List = (SubCats, maximumPrice, sort) => {
-    const param = useParams();
-    const CatId = parseInt(param.id);
+const List = ({ catId }) => {
+
     const [data, setData] = useState([])
 
     const URL =
-        `https://dukkan.onrender.com/api/categories/${CatId}?populate[products][populate]=*`;
+        `https://dukkan.onrender.com/api/categories/${catId}?populate[products][populate]=*`;
 
     useEffect(() => {
 
-        setTimeout(() => {
-            axios.get(URL)
-                .then(response => {
-                    setData(response.data.data.attributes.products.data)
-                })
-                .catch(error => {
-                    console.log(error);
-                });
-        }, 100)
+
+        axios.get(URL)
+
+            .then(response => {
+
+                setData(response.data.data.attributes.products.data)
+            })
+            .catch(error => {
+                console.log(error);
+            });
+
 
     },);
     const isLoading = data?.length >= 4
