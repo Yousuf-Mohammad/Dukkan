@@ -31,7 +31,7 @@ const Product = () => {
 
     });
 
-    console.log(id)
+
     return (
         <div>
             {<div className='product'>

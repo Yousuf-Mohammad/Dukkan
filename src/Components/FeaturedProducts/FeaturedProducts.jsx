@@ -15,8 +15,9 @@ const FeaturedProducts = ({ type }) => {
             .then(res => res.json())
             .then(data => setProduct(data.data));
     });
-    const isLoading = product?.length <= 10
 
+    const isLoading = product?.length >= 4
+    console.log(isLoading)
 
     return (
 

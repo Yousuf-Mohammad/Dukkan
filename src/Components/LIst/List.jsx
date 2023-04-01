@@ -8,12 +8,12 @@ const List = (SubCats, maximumPrice, sort) => {
     const param = useParams();
     const CatId = parseInt(param.id);
     const [data, setData] = useState([])
-    const [loading, setLoading] = useState(false)
+
     const URL =
         `https://dukkan.onrender.com/api/categories/${CatId}?populate[products][populate]=*`;
 
     useEffect(() => {
-        setLoading(true)
+
         setTimeout(() => {
             axios.get(URL)
                 .then(response => {
@@ -22,14 +22,15 @@ const List = (SubCats, maximumPrice, sort) => {
                 .catch(error => {
                     console.log(error);
                 });
-        }, 300)
-        setLoading(false)
+        }, 100)
+
     },);
+    const isLoading = data?.length >= 4
 
 
     return (
         <div className='list'>
-            {loading ? <img src="https://cdn.dribbble.com/users/1641/screenshots/1632371/loading.gif" alt="" /> :
+            {!isLoading ? <img src="https://cdn.dribbble.com/users/1641/screenshots/1632371/loading.gif" alt="" /> :
 
                 data?.map(item => (
                     <Card item={item} key={item.id} />
